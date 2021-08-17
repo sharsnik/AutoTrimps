@@ -590,8 +590,14 @@ function initializeAllSettings() {
     createSetting('Rtributespecialselection', 'TrF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
     createSetting('Rtributegatherselection', 'TrF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
 
+    //worshipper farm
+    document.getElementById('Rtributegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rworshipperfarm', 'worshipper Farm', 'Turn this on if you want to farm worshippers ever 5 levels. ', 'boolean', false, null, 'Maps');
+    createSetting('Rworshipperfarmtime', 'WF: Max farm time', 'Will farm for this amoutn of time, or until you have 50 worshippers. ', 'value', [-1], null, 'Maps');
+    createSetting('Rworshipperstartmap', 'WF: Zone', 'Farms for worshippers starting at given map, and then every 5 maps. Must be greater than 50', 'value', [-1], null, 'Maps');
+    createSetting('Rworshippermapselection', 'WF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful", "Farmlands"], 'Maps');
+    createSetting('Rworshipperspecialselection', 'WF: Special Selection', 'Select which Special to use. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
 
-    
     //Spire
     
     //Line 1
