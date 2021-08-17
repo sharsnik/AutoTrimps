@@ -1068,7 +1068,7 @@ function RautoMap() {
     if (getPageSetting('Rworshipperfarm') == true) {
         Rtimefarm = (getPageSetting('Rworshipperfarm') == true && game.global.world > 5);
         if (Rtimefarm) {
-            var worshippers = game.jobs.worshipper.owned;
+            var worshippers = game.jobs.Worshipper.owned;
 
             var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
 
