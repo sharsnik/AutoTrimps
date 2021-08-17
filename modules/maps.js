@@ -751,6 +751,7 @@ var Rtimefarm = !1;
 var RadditionalCritMulti = 2 < getPlayerCritChance() ? 25 : 5;
 var Rshouldtimefarm = !1;
 var Rshouldtributefarm = !1;
+var Rshouldworshipperfarm = !1;
 var Rshoulddobogs = false;
 var Rshoulddopraid = false;
 var Rshoulddoquest = false;
