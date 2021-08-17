@@ -826,7 +826,7 @@ function RupdateAutoMapsStatus(get) {
     else if (Rshoulddoquest) status = 'Questing';
     else if (Rshouldtimefarm) status = 'Time Farming';
     else if (Rshouldtributefarm) status = 'Tribute Farming';
-    else if (Rshouldworshipperfarm) status = 'worshipper Farming';
+    else if (Rshouldworshipperfarm) status = 'Worshipper Farming';
     else if (Rshoulddobogs) status = 'Black Bogs';
     else if (RdoMaxMapBonus) status = 'Max Map Bonus After Zone';
     else if (!game.global.mapsUnlocked) status = '&nbsp;';

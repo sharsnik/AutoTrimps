@@ -572,7 +572,7 @@ function RbuyJobs() {
         }
     }
     if (Rshouldshipfarm) {
-	allIn = "Farmer";
+	    allIn = "Farmer";
     }
     var desiredRatios = [0,0,0,0];
     if (allIn != "") {
