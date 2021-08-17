@@ -1066,9 +1066,7 @@ function RautoMap() {
 
     //worshipper Farm
     if (getPageSetting('Rworshipperfarm') == true) {
-        var worshipperfarmcell;
-        worshipperfarmcell = 1;
-        Rtimefarm = (getPageSetting('Rworshipperfarmtime') == true && ((tributefarmcell <= 1) || (tributefarmcell > 1 && (game.global.lastClearedCell + 1) >= tributefarmcell)) && game.global.world > 5);
+        Rtimefarm = (getPageSetting('Rworshipperfarm') == true && game.global.world > 5);
         if (Rtimefarm) {
             var worshippers = game.jobs.worshipper.owned;
 
