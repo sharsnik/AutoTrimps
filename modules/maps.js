@@ -1983,7 +1983,7 @@ function RautoMap() {
             if (!game.global.switchToMaps) {
                 mapsClicked();
             }
-            if (RdoVoids && game.global.switchToMaps &&
+            else if (RdoVoids && game.global.switchToMaps &&
                 (RdoVoids ||
                     (!RenoughDamage && RenoughHealth && game.global.lastClearedCell < 9) ||
                     (RshouldFarm && game.global.lastClearedCell >= customVars.RshouldFarmCell) ||
@@ -1998,7 +1998,7 @@ function RautoMap() {
                 }
                 mapsClicked();
             }
-            if (Rshouldworshipperfarm || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1) {
+            else if (game.global.switchToMaps && (Rshouldworshipperfarm || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1)) {
                 mapsClicked();
             }
         }
