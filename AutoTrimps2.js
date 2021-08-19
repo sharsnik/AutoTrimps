@@ -316,14 +316,18 @@ function mainLoop() {
     }
 
         var isVoid = false;
+        var isCrit = false;
         var attack = getCurrentWorldCell().attack;
         if (getCurrentMapObject() != undefined) {
             isVoid == getCurrentMapObject().location == "Void";
+            if (isVoid) {
+                isCrit = getCurrentMapObject().voidBuff == "getCrit";
+            }
             attack = getCurrentMapCell().attack;
         }
         //REquality
         if (getPageSetting('Rminequalityfactor') > 0) {
-            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ < attack * game.portal.Equality.getMult() * getPageSetting('Rminequalityfactor') * (isVoid ? 2 : 1)) {
+            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ < attack * game.portal.Equality.getMult() * getPageSetting('Rminequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1)) {
                 game.portal.Equality.scalingActive = false;
                 game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
 
@@ -334,7 +338,7 @@ function mainLoop() {
             document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
         }
         if (getPageSetting('Rmaxequalityfactor') > 0) {
-            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ > attack * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor') * (isVoid ? 2 : 1)) {
+            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ > attack * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1) ) {
                 game.portal.Equality.scalingActive = false;
                 game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
 
