@@ -594,8 +594,9 @@ function initializeAllSettings() {
     //worshipper farm
     document.getElementById('Rtributegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rworshipperfarm', 'Worshipper Farm', 'Turn this on if you want to farm worshippers every 5 maps. ', 'boolean', false, null, 'Maps');
-    createSetting('Rworshipperfarmtime', 'WF: Max farm time', 'Will farm for this amoutn of time, or until you have 50 worshippers. ', 'value', [-1], null, 'Maps');
-    createSetting('Rworshipperstartmap', 'WF: Zone', 'Farms for worshippers starting at given map, and then every 5 maps. Must be greater than 50', 'value', [-1], null, 'Maps');
+    createSetting('Rworshipperfarmtime', 'WF: Max farm time', 'Will farm for this amount of time, or until you have 50 worshippers. ', 'value', [-1], null, 'Maps');
+    createSetting('Rworshipperstartmap', 'WF: Start Zone', 'Farms for worshippers starting at given zone, and then every 5 maps. Must be greater than 50', 'value', [-1], null, 'Maps');
+    createSetting('Rworshipperendmap', 'WF: End Zone', 'Stop farming worshippers past given zone', 'value', [-1], null, 'Maps');
     createSetting('Rworshippermapselection', 'WF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful", "Farmlands"], 'Maps');
     createSetting('Rworshipperspecialselection', 'WF: Special Selection', 'Select which Special to use. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
 
@@ -1736,6 +1737,7 @@ function updateCustomButtons() {
     radonon ? turnOn("Rworshipperfarm") : turnOff("Rworshipperfarm");
     (radonon && getPageSetting('Rworshipperfarm') == true) ? turnOn("Rworshipperfarmtime") : turnOff("Rworshipperfarmtime");
     (radonon && getPageSetting('Rworshipperfarm') == true) ? turnOn("Rworshipperstartmap") : turnOff("Rworshipperstartmap");
+    (radonon && getPageSetting('Rworshipperfarm') == true) ? turnOn("Rworshipperendmap") : turnOff("Rworshipperendmap");
     (radonon && getPageSetting('Rworshipperfarm') == true) ? turnOn("Rworshippermapselection") : turnOff("Rworshippermapselection");
     (radonon && getPageSetting('Rworshipperfarm') == true) ? turnOn("Rworshipperspecialselection") : turnOff("Rworshipperspecialselection");
     radonon ? turnOn("RVoidMaps"): turnOff("RVoidMaps");

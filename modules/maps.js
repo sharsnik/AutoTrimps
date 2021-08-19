@@ -1072,7 +1072,7 @@ function RautoMap() {
 
             var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
 
-            if (game.global.world >= 50 && (game.global.world - getPageSetting('Rworshipperstartmap')) % 5 == 0 && worshippers < 50 && time < getPageSetting('Rworshipperfarmtime')) {
+            if (game.global.world >= 50 && game.global.world <= getPageSetting('Rworshipperendmap') && (game.global.world - getPageSetting('Rworshipperstartmap')) % 5 == 0 && worshippers < 50 && time < getPageSetting('Rworshipperfarmtime')) {
                 Rshouldworshipperfarm = true;
             }
         }
