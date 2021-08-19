@@ -516,10 +516,9 @@ function initializeAllSettings() {
     createSetting('Requipfarmmult', 'AEF: Multiplier', 'Starting from the zone above AEF: Zone, this setting will multiply the H:D you have set in AEF: H:D. So if AEF: Zone was 100, AEF: H:D was 10, AEF: Multiplier was 1.2, at z101 your H:D target will be 12, then at z102 it will be 14.4 and so on. This way you can account for the zones getting stronger and you will not waste time farming for a really low H:D. ', 'value', '-1', null, 'Gear');
     createSetting('Requipfarmhits', 'AEF: Hits', 'How many hits do you want to kill an enemy in a AEF map. ', 'value', '-1', null, 'Gear');
     
-
     document.getElementById('Requipfarmhits').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('RminEqualityFactor', 'Equality: Minimum health ratio', 'You will add Equality if you can survive less than this numbers of hits.', 'value', 3, null, 'Gear');
-    createSetting('RmaxEqualityFactor', 'Equality: Maximum health ratio', 'You will remove Equality if you can survive more than this numbers of hits.', 'value', 5, null, 'Gear');
+    createSetting('Rminequalityfactor', 'Equality: Min hits', 'You will add Equality if you can survive less than this numbers of hits.', 'value', 3, null, 'Gear');
+    createSetting('Rmaxequalityfactor', 'Equality: Max hits', 'You will remove Equality if you can survive more than this numbers of hits.', 'value', 5, null, 'Gear');
 
     //Maps
 
@@ -1689,8 +1688,8 @@ function updateCustomButtons() {
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult") : turnOff("Requipfarmmult");
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits") : turnOff("Requipfarmhits");
 
-    radonon ? turnOn("RminEqualityFactor") : turnOff("RminEqualityFactor");
-    radonon ? turnOn("RmaxEqualityFactor") : turnOff("RmaxEqualityFactor");
+    radonon ? turnOn("Rminequalityfactor") : turnOff("Rminequalityfactor");
+    radonon ? turnOn("Rmaxequalityfactor") : turnOff("Rminequalityfactor");
 
     
 
