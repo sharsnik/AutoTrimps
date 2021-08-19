@@ -325,6 +325,7 @@ function mainLoop() {
                     game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
                 }
             }
+            document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
         }
         if (getPageSetting('Rmaxequalityfactor') > 0) {
             if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > Math.max(getCurrentWorldCell().attack, getCurrentMapCell().attack) * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor')) {
@@ -335,6 +336,7 @@ function mainLoop() {
                     game.portal.Equality.disabledStackCount = 0;
                 }
             }
+            document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
         }
 	
         //RCombat
