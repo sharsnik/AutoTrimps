@@ -1686,8 +1686,11 @@ function updateCustomButtons() {
     radonon ? turnOn("Requipfarmon"): turnOff("Requipfarmon");
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmzone"): turnOff("Requipfarmzone");
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("RequipfarmHD"): turnOff("RequipfarmHD");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult"): turnOff("Requipfarmmult");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits"): turnOff("Requipfarmhits");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult") : turnOff("Requipfarmmult");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits") : turnOff("Requipfarmhits");
+
+    radonon ? turnOn("RminEqualityFactor") : turnOff("RminEqualityFactor");
+    radonon ? turnOn("RmaxEqualityFactor") : turnOff("RmaxEqualityFactor");
 
     
 
