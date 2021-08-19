@@ -516,7 +516,9 @@ function initializeAllSettings() {
     createSetting('Requipfarmmult', 'AEF: Multiplier', 'Starting from the zone above AEF: Zone, this setting will multiply the H:D you have set in AEF: H:D. So if AEF: Zone was 100, AEF: H:D was 10, AEF: Multiplier was 1.2, at z101 your H:D target will be 12, then at z102 it will be 14.4 and so on. This way you can account for the zones getting stronger and you will not waste time farming for a really low H:D. ', 'value', '-1', null, 'Gear');
     createSetting('Requipfarmhits', 'AEF: Hits', 'How many hits do you want to kill an enemy in a AEF map. ', 'value', '-1', null, 'Gear');
     
-	
+    document.getElementById('Requipfarmhits').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rminequalityfactor', 'Equality: Min hits', 'You will add Equality if you can survive less than this numbers of hits.', 'value', 3, null, 'Gear');
+    createSetting('Rmaxequalityfactor', 'Equality: Max hits', 'You will remove Equality if you can survive more than this numbers of hits.', 'value', 5, null, 'Gear');
 
     //Maps
 
@@ -547,7 +549,16 @@ function initializeAllSettings() {
     createSetting('scryvoidmaps', 'VM Scryer', 'Only use if you have Scryhard II, for er, obvious reasons. Works without the scryer options. ', 'boolean', false, null, 'Maps');
     createSetting('buywepsvoid', 'VM Buy Weps', 'Buys gear in Void maps regardless of your H:D ratio. Useful if you want to overkill as much as possible. ', 'boolean', false, null, 'Maps');
 
-    
+    document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Maps');
+    createSetting('Rtimefarmzone', 'TF: Zone', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
+    createSetting('Rtimefarmtime', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
+    createSetting('Rtimemapselection', 'TF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful", "Farmlands"], 'Maps');
+    createSetting('Rtimespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
+    createSetting('Rtimegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
+
     //RMaps
 
     //Line 1
@@ -1674,8 +1685,11 @@ function updateCustomButtons() {
     radonon ? turnOn("Requipfarmon"): turnOff("Requipfarmon");
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmzone"): turnOff("Requipfarmzone");
     (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("RequipfarmHD"): turnOff("RequipfarmHD");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult"): turnOff("Requipfarmmult");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits"): turnOff("Requipfarmhits");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult") : turnOff("Requipfarmmult");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits") : turnOff("Requipfarmhits");
+
+    radonon ? turnOn("Rminequalityfactor") : turnOff("Rminequalityfactor");
+    radonon ? turnOn("Rmaxequalityfactor") : turnOff("Rminequalityfactor");
 
     
 

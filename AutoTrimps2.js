@@ -315,7 +315,27 @@ function mainLoop() {
 	    archstring();
     }
 
+        //REquality
+        if (getPageSetting('Rminequalityfactor') > 0) {
+            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) < getCurrentWorldCell().attack * getPageSetting('RminEqualityFactor')) {
+                game.portal.Equality.scalingActive = false;
+                game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
 
+                if (game.portal.Equality.disabledStackCount >= game.portal.Equality.radLevel) {
+                    game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
+                }
+            }
+        }
+        if (getPageSetting('Rmaxequalityfactor') > 0) {
+            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > getCurrentWorldCell().attack * getPageSetting('RmaxEqualityFactor')) {
+                game.portal.Equality.scalingActive = false;
+                game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
+
+                if (game.portal.Equality.disabledStackCount <= 0) {
+                    game.portal.Equality.disabledStackCount = 0;
+                }
+            }
+        }
 	
         //RCombat
 	if (getPageSetting('Requipon') == true && (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([11, 12, 21, 22].indexOf(questcheck()) >= 0)))) RautoEquip();
