@@ -313,7 +313,17 @@ function mainLoop() {
 	//RChallenges
 	if (getPageSetting('Rarchon') == true && game.global.challengeActive == "Archaeology") {
 	    archstring();
-	}
+    }
+
+        //REquality
+        if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) < getCurrentWorldCell().attack * 3) {
+            game.portal.Equality.scalignActive = false;
+            game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
+        }
+        else if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > getCurrentWorldCell().attack * 5) {
+            game.portal.Equality.scalignActive = false;
+            game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
+        }
 	
         //RCombat
 	if (getPageSetting('Requipon') == true && (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([11, 12, 21, 22].indexOf(questcheck()) >= 0)))) RautoEquip();
