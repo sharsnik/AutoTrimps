@@ -1074,7 +1074,7 @@ function RautoMap() {
 
             if (game.global.world >= 50 && (game.global.world - getPageSetting('Rworshipperstartmap')) % 5 == 0 && worshippers < 50 && time < getPageSetting('Rworshipperfarmtime')) {
                 Rshouldworshipperfarm = true;
-                mapsClicked();
+                mapsClicked(true);
             }
         }
     }
