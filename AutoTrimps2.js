@@ -317,7 +317,7 @@ function mainLoop() {
 
         //REquality
         if (getPageSetting('Rminequalityfactor') > 0) {
-            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) < getCurrentWorldCell().attack * getPageSetting('RminEqualityFactor')) {
+            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) < getCurrentWorldCell().attack * getPageSetting('Rminequalityfactor')) {
                 game.portal.Equality.scalingActive = false;
                 game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
 
@@ -327,7 +327,7 @@ function mainLoop() {
             }
         }
         if (getPageSetting('Rmaxequalityfactor') > 0) {
-            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > getCurrentWorldCell().attack * getPageSetting('RmaxEqualityFactor')) {
+            if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > getCurrentWorldCell().attack * getPageSetting('Rmaxequalityfactor')) {
                 game.portal.Equality.scalingActive = false;
                 game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
 
