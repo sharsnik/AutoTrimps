@@ -1969,9 +1969,6 @@ function RautoMap() {
             if (game.global.repeatMap && Rshouldshipfarm && Rshipfragfarming && shipfrag() == true) {
                 repeatClicked();
             }
-            if (Rshouldworshipperfarm) {
-                repeatClicked();
-            }
 
         } else {
             if (game.global.repeatMap) {
@@ -1999,6 +1996,9 @@ function RautoMap() {
                 if (RscryerStuck) {
                     debug("Got perma-stuck on cell " + (game.global.lastClearedCell + 2) + " during scryer stance. Are your scryer settings correct? Entering map to farm to fix it.");
                 }
+                mapsClicked();
+            }
+            if (Rshouldworshipperfarm) {
                 mapsClicked();
             }
         }
