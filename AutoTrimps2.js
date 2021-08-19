@@ -319,7 +319,7 @@ function mainLoop() {
         var isCrit = false;
         var attack = getCurrentWorldCell().attack;
         if (getCurrentMapObject() != undefined) {
-            isVoid == getCurrentMapObject().location == "Void";
+            isVoid = getCurrentMapObject().location == "Void";
             if (isVoid) {
                 isCrit = getCurrentMapObject().voidBuff == "getCrit";
             }
