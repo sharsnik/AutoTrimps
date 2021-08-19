@@ -1998,7 +1998,7 @@ function RautoMap() {
                 }
                 mapsClicked();
             }
-            if (Rshouldworshipperfarm || game.resources.trimps.realMax() == game.resources.trimps.owned) {
+            if (Rshouldworshipperfarm || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1) {
                 mapsClicked();
             }
         }
