@@ -317,12 +317,20 @@ function mainLoop() {
 
         //REquality
         if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) < getCurrentWorldCell().attack * 3) {
-            game.portal.Equality.scalignActive = false;
+            game.portal.Equality.scalingActive = false;
             game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
+
+            if (game.portal.Equality.disabledStackCount >= game.portal.Equality.radLevel) {
+                game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
+            }
         }
         else if (game.global.soldierHealthMax * (1 + getEnergyShieldMult()) > getCurrentWorldCell().attack * 5) {
-            game.portal.Equality.scalignActive = false;
+            game.portal.Equality.scalingActive = false;
             game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
+
+            if (game.portal.Equality.disabledStackCount <= 0) {
+                game.portal.Equality.disabledStackCount = 0;
+            }
         }
 	
         //RCombat
