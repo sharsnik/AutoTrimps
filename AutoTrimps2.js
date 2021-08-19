@@ -315,7 +315,10 @@ function mainLoop() {
 	    archstring();
     }
 
-        var isVoid = getCurrentMapObject().location == "Void";
+        var isVoid = false;
+        if (getCurrentMapObject() != undefined) {
+            getCurrentMapObject().location == "Void";
+        }
         //REquality
         if (getPageSetting('Rminequalityfactor') > 0) {
             if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ < Math.max(getCurrentWorldCell().attack, getCurrentMapCell().attack) * game.portal.Equality.getMult() * getPageSetting('Rminequalityfactor') * (isVoid ? 2 : 1)) {
