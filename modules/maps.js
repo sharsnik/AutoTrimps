@@ -1998,7 +1998,7 @@ function RautoMap() {
                 }
                 mapsClicked();
             }
-            if (Rshouldworshipperfarm) {
+            if (Rshouldworshipperfarm || game.resources.trimps.soldiers == game.resources.trimps.maxSoldiers) {
                 mapsClicked();
             }
         }
