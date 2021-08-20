@@ -355,6 +355,7 @@ function mainLoop() {
         }
         else {
             if (equalityScaling) {
+                game.portal.Equality.scalingActive = true;
                 game.portal.Equality.disabledStackCount = 0;
                 document.getElementById('equalityA').innerHTML = "Equality";
             }
