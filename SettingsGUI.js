@@ -519,6 +519,8 @@ function initializeAllSettings() {
     document.getElementById('Requipfarmhits').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rminequalityfactor', 'Equality: Min hits', 'You will add Equality if you can survive less than this numbers of hits.', 'value', 3, null, 'Gear');
     createSetting('Rmaxequalityfactor', 'Equality: Max hits', 'You will remove Equality if you can survive more than this numbers of hits.', 'value', 5, null, 'Gear');
+    createSetting('Rmaxequalityminzone', 'Equality: Min zone', 'Use equality scaling after this zone.', 'value', 0, null, 'Gear');
+    createSetting('Rmaxequalitymaxzone', 'Equality: Max zone', 'Use equality scaling until this zone.', 'value', 1000, null, 'Gear');
 
     //Maps
 

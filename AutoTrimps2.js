@@ -46,6 +46,7 @@ function printChangelog() {
 
 var runInterval = 100;
 var startupDelay = 4000;
+var equalityScaling = false;
 
 setTimeout(delayStart, startupDelay);
 
@@ -246,16 +247,16 @@ function mainLoop() {
     }
     
     //Logic for Universe 2
-    if (game.global.universe == 2){
+    if (game.global.universe == 2) {
 
         //Offline Progress
         if (!usingRealTimeOffline) {
             RsetScienceNeeded();
         }
 
-	if (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([14, 24].indexOf(questcheck()) >= 0))) {
+        if (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([14, 24].indexOf(questcheck()) >= 0))) {
             if (getPageSetting('RBuyUpgradesNew') != 0) RbuyUpgrades();
-	}
+        }
 
         //RCore
         if (getPageSetting('RAutoMaps') > 0 && game.global.mapsUnlocked) RautoMap();
@@ -264,89 +265,100 @@ function mainLoop() {
         if (getPageSetting('RTrapTrimps') && game.global.trapBuildAllowed && game.global.trapBuildToggled == false) toggleAutoTrap();
         if (game.global.challengeActive == "Daily" && getPageSetting('buyradony') >= 1 && getDailyHeliumValue(countDailyWeight()) >= getPageSetting('buyradony') && game.global.b >= 100 && !game.singleRunBonuses.heliumy.owned) purchaseSingleRunBonus('heliumy');
 
-	//AB
-	if (game.stats.highestRadLevel.valueTotal() >= 75 && getPageSetting('RAB') == true) {
+        //AB
+        if (game.stats.highestRadLevel.valueTotal() >= 75 && getPageSetting('RAB') == true) {
             if (getPageSetting('RABpreset') == true) ABswitch();
             if (getPageSetting('RABdustsimple') == 1) ABdustsimple();
             else if (getPageSetting('RABdustsimple') == 2) ABdustsimplenonhid();
             if (getPageSetting('RABfarm') == true) ABfarmsave();
             if (getPageSetting('RABfarmswitch') == true) ABfarmswitch();
             if (getPageSetting('RABsolve') == true) ABsolver();
-	}
+        }
 
         //RBuildings
-	    
-	//var smithybought = 0;
-	    
-	//if (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([7, 10, 11, 12, 13, 20, 21, 22, 23].indexOf(questcheck()) >= 0))) {
-            if (getPageSetting('RBuyBuildingsNew') == true) {
-                RbuyBuildings();
-	    }
-	//}
 
-	/*else if (game.global.challengeActive == "Quest" && game.global.world > 5 && questcheck() == 7) {
-	    if (smithybought <= 0 && !game.buildings.Smithy.locked && canAffordBuilding('Smithy') && game.global.challengeActive == "Quest" && ((questcheck() == 7) || (RcalcHDratio() * 10 >= getPageSetting('Rmapcuntoff')))) {
-	        buyBuilding("Smithy", true, true, 1);
-	        smithybought = game.global.world;
-            }
-            if (smithybought > 0 && game.global.world > smithybought && game.global.challengeActive == "Quest") {
-	        smithybought = 0;
-            }
-	}*/
-        
+        //var smithybought = 0;
+
+        //if (!(game.global.challengeActive == "Quest" && game.global.world > 5 && game.global.lastClearedCell < 90 && ([7, 10, 11, 12, 13, 20, 21, 22, 23].indexOf(questcheck()) >= 0))) {
+        if (getPageSetting('RBuyBuildingsNew') == true) {
+            RbuyBuildings();
+        }
+        //}
+
+        /*else if (game.global.challengeActive == "Quest" && game.global.world > 5 && questcheck() == 7) {
+            if (smithybought <= 0 && !game.buildings.Smithy.locked && canAffordBuilding('Smithy') && game.global.challengeActive == "Quest" && ((questcheck() == 7) || (RcalcHDratio() * 10 >= getPageSetting('Rmapcuntoff')))) {
+                buyBuilding("Smithy", true, true, 1);
+                smithybought = game.global.world;
+                }
+                if (smithybought > 0 && game.global.world > smithybought && game.global.challengeActive == "Quest") {
+                smithybought = 0;
+                }
+        }*/
+
         //RJobs
         if (!(game.global.challengeActive == "Quest" && game.global.world > 5) && getPageSetting('RBuyJobsNew') == 1) {
             RworkerRatios();
             RbuyJobs();
-        } 
-        else if (!(game.global.challengeActive == "Quest" && game.global.world > 5) && getPageSetting('RBuyJobsNew') == 2) { 
-	    RbuyJobs();
-	}
-	if (game.global.challengeActive == "Quest" && game.global.world > 5 && getPageSetting('RBuyJobsNew') > 0) {
-	    RquestbuyJobs();
-	}
+        }
+        else if (!(game.global.challengeActive == "Quest" && game.global.world > 5) && getPageSetting('RBuyJobsNew') == 2) {
+            RbuyJobs();
+        }
+        if (game.global.challengeActive == "Quest" && game.global.world > 5 && getPageSetting('RBuyJobsNew') > 0) {
+            RquestbuyJobs();
+        }
 
         //RPortal
         if (autoTrimpSettings.RAutoPortal.selected != "Off" && game.global.challengeActive != "Daily" && !game.global.runningChallengeSquared) RautoPortal();
         if (getPageSetting('RAutoPortalDaily') > 0 && game.global.challengeActive == "Daily") RdailyAutoPortal();
 
-	//RChallenges
-	if (getPageSetting('Rarchon') == true && game.global.challengeActive == "Archaeology") {
-	    archstring();
-    }
-
-        var isVoid = false;
-        var isCrit = false;
-        var attack = getCurrentWorldCell().attack;
-        if (getCurrentMapObject() != undefined) {
-            isVoid = getCurrentMapObject().location == "Void";
-            if (isVoid) {
-                isCrit = getCurrentMapObject().voidBuff == "getCrit";
-            }
-            attack = getCurrentMapCell().attack;
+        //RChallenges
+        if (getPageSetting('Rarchon') == true && game.global.challengeActive == "Archaeology") {
+            archstring();
         }
-        //REquality
-        if (getPageSetting('Rminequalityfactor') > 0) {
-            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ < attack * game.portal.Equality.getMult() * getPageSetting('Rminequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1)) {
-                game.portal.Equality.scalingActive = false;
-                game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
 
-                if (game.portal.Equality.disabledStackCount >= game.portal.Equality.radLevel) {
-                    game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
+        if ((getPageSetting('Rmaxequalityminzone') <= 0 || game.global.world > getPageSetting('Rmaxequalityminzone')) && (getPageSetting('Rmaxequalitymaxzone') <= 0 || game.global.world > getPageSetting('Rmaxequalitymaxzone'))) {
+            equalityScaling = true;
+
+            var isVoid = false;
+            var isCrit = false;
+            var attack = getCurrentWorldCell().attack;
+            if (getCurrentMapObject() != undefined) {
+                isVoid = getCurrentMapObject().location == "Void";
+                if (isVoid) {
+                    isCrit = getCurrentMapObject().voidBuff == "getCrit";
                 }
+                attack = getCurrentMapCell().attack;
             }
-            document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
+            //REquality
+            if (getPageSetting('Rminequalityfactor') > 0) {
+                if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ < attack * game.portal.Equality.getMult() * getPageSetting('Rminequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1)) {
+                    game.portal.Equality.scalingActive = false;
+                    game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount + 1;
+
+                    if (game.portal.Equality.disabledStackCount >= game.portal.Equality.radLevel) {
+                        game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
+                    }
+                }
+                document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
+            }
+            if (getPageSetting('Rmaxequalityfactor') > 0) {
+                if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ > attack * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1)) {
+                    game.portal.Equality.scalingActive = false;
+                    game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
+
+                    if (game.portal.Equality.disabledStackCount <= 0) {
+                        game.portal.Equality.disabledStackCount = 0;
+                    }
+                }
+                document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
+            }
         }
-        if (getPageSetting('Rmaxequalityfactor') > 0) {
-            if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ > attack * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1) ) {
-                game.portal.Equality.scalingActive = false;
-                game.portal.Equality.disabledStackCount = game.portal.Equality.disabledStackCount - 1;
-
-                if (game.portal.Equality.disabledStackCount <= 0) {
-                    game.portal.Equality.disabledStackCount = 0;
-                }
+        else {
+            if (equalityScaling) {
+                game.portal.Equality.disabledStackCount = 0;
+                document.getElementById('equalityA').innerHTML = "Equality";
             }
-            document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
+            equalityScaling = false;
         }
 	
         //RCombat
