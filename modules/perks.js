@@ -1372,7 +1372,7 @@ RAutoPerks.initializePerks = function () {
     var tenacity = new RAutoPerks.VariablePerk("tenacity", 50000000, true,      11, 0.1, 40);
     var greed = new RAutoPerks.VariablePerk("greed", 10000000000, true,      12, 0.1, 40);
     var frenzy = new RAutoPerks.VariablePerk("frenzy", 1000000000000000, true,      13, 0.1);
-    var championism = new RAutoPerks.VariablePerk("championism", 1000000000, true,      14, 0.1);
+    var championism = new RAutoPerks.VariablePerk("championism", 1000000000, true,      14, 5);
     
     equality.exprate = 1.5;
     //scruffy
