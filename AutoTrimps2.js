@@ -316,7 +316,7 @@ function mainLoop() {
             archstring();
         }
 
-        if ((getPageSetting('Rmaxequalityminzone') <= 0 || game.global.world > getPageSetting('Rmaxequalityminzone')) && (getPageSetting('Rmaxequalitymaxzone') <= 0 || game.global.world > getPageSetting('Rmaxequalitymaxzone'))) {
+        if ((getPageSetting('Rmaxequalityminzone') <= 0 || game.global.world >= getPageSetting('Rmaxequalityminzone')) && (getPageSetting('Rmaxequalitymaxzone') <= 0 || game.global.world <= getPageSetting('Rmaxequalitymaxzone'))) {
             equalityScaling = true;
 
             var isVoid = false;
@@ -339,7 +339,6 @@ function mainLoop() {
                         game.portal.Equality.disabledStackCount = game.portal.Equality.radLevel;
                     }
                 }
-                document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
             }
             if (getPageSetting('Rmaxequalityfactor') > 0) {
                 if (game.global.soldierHealthMax/* * (1 + getEnergyShieldMult())*/ > attack * game.portal.Equality.getMult() * getPageSetting('Rmaxequalityfactor') * (isVoid ? 2 : 1) * (isCrit ? 3 : 1)) {
@@ -350,8 +349,8 @@ function mainLoop() {
                         game.portal.Equality.disabledStackCount = 0;
                     }
                 }
-                document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
             }
+            document.getElementById('equalityA').innerHTML = "Equality (" + game.portal.Equality.disabledStackCount + ")";
         }
         else {
             if (equalityScaling) {
