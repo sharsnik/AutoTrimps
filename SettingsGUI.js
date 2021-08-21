@@ -1594,6 +1594,7 @@ function updateCustomButtons() {
     (!radonon && !fuckbuilding) ? turnOn("MaxTribute") : turnOff("MaxTribute");
     (!radonon && !fuckbuilding) ? turnOn("MaxNursery") : turnOff("MaxNursery");
     (!radonon && !fuckbuilding) ? turnOn("NoNurseriesUntil") : turnOff("NoNurseriesUntil");
+    (!radonon && !fuckbuilding) ? turnOn("SmartNurseries") : turnOff("SmartNurseries");
     (!radonon && !fuckbuilding) ? turnOn("WarpstationCap") : turnOff("WarpstationCap");
     (!radonon && !fuckbuilding) ? turnOn("WarpstationCoordBuy") : turnOff("WarpstationCoordBuy");
     (!radonon && !fuckbuilding) ? turnOn("FirstGigastation") : turnOff("FirstGigastation");
