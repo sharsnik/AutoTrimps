@@ -203,7 +203,7 @@ function buyBuildings() {
     }
     //Nurseries
     if ((game.buildings.Nursery.locked == 0 && (!hidebuild && (game.global.world >= getPageSetting('NoNurseriesUntil') || getPageSetting('NoNurseriesUntil') < 1) && (getPageSetting('MaxNursery') > game.buildings.Nursery.owned || getPageSetting('MaxNursery') == -1)) || (game.global.challengeActive != "Daily" && getPageSetting('PreSpireNurseries') > game.buildings.Nursery.owned && isActiveSpireAT()) || (game.global.challengeActive == "Daily" && getPageSetting('dPreSpireNurseries') > game.buildings.Nursery.owned && disActiveSpireAT()))
-        && (!getPageSetting('SmartNurseries') || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1)) {
+        && (!getPageSetting('SmartNurseries') || !(game.resources.trimps.realMax() <= game.resources.trimps.owned + 1))) {
 	safeBuyBuilding('Nursery');
     }
 
