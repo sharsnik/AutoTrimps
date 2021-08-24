@@ -1328,17 +1328,20 @@ function RautoMap() {
             var insanityfarmstacks;
             var insanitystacks = game.challenges.Insanity.insanity;
             var maxinsanity = game.challenges.Insanity.maxInsanity;
+            var farmLevel = Rinsanityfarmlevel.indexOf(game.global.world);
 
             insanityfarmzone = getPageSetting('Rinsanityfarmzone');
             insanityfarmstacks = getPageSetting('Rinsanityfarmstack');
+            farmLevel = getPageSetting('Rinsanityfarmlevel')
 
             var insanitystacksfarmindex = insanityfarmzone.indexOf(game.global.world);
             var insanitystackszones = insanityfarmstacks[insanitystacksfarmindex];
             if (insanitystackszones > maxinsanity) {
                 insanitystackszones = maxinsanity;
             }
+            farmLevel = farmLevel[insanitystacksfarmindex];
 
-            if (insanityfarmzone.includes(game.global.world) && insanitystackszones != insanitystacks) {
+            if (insanityfarmzone.includes(game.global.world) && (farmLevel < 0 && insanitystackszones >= insanitystacks || farmLevel >= 0 && insanitystackszones >= insanitystacks) {
                 Rshouldinsanityfarm = true;
             }
         }
