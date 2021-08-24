@@ -1332,7 +1332,7 @@ function RautoMap() {
 
             insanityfarmzone = getPageSetting('Rinsanityfarmzone');
             insanityfarmstacks = getPageSetting('Rinsanityfarmstack');
-            farmLevel = getPageSetting('Rinsanityfarmlevel')
+            farmLevel = getPageSetting('Rinsanityfarmlevel');
 
             var insanitystacksfarmindex = insanityfarmzone.indexOf(game.global.world);
             var insanitystackszones = insanityfarmstacks[insanitystacksfarmindex];
