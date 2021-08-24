@@ -1328,11 +1328,10 @@ function RautoMap() {
             var insanityfarmstacks;
             var insanitystacks = game.challenges.Insanity.insanity;
             var maxinsanity = game.challenges.Insanity.maxInsanity;
-            var farmLevel = Rinsanityfarmlevel.indexOf(game.global.world);
+            var farmLevel = getPageSetting('Rinsanityfarmlevel');
 
             insanityfarmzone = getPageSetting('Rinsanityfarmzone');
             insanityfarmstacks = getPageSetting('Rinsanityfarmstack');
-            farmLevel = getPageSetting('Rinsanityfarmlevel');
 
             var insanitystacksfarmindex = insanityfarmzone.indexOf(game.global.world);
             var insanitystackszones = insanityfarmstacks[insanitystacksfarmindex];
