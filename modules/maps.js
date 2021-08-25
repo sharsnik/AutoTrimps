@@ -1340,7 +1340,7 @@ function RautoMap() {
             }
             farmLevel = farmLevel[insanitystacksfarmindex];
 
-            if (insanityfarmzone.includes(game.global.world) && (farmLevel < 0 && insanitystackszones >= insanitystacks || farmLevel >= 0 && insanitystackszones >= insanitystacks)) {
+            if (insanityfarmzone.includes(game.global.world) && (farmLevel < 0 && insanitystackszones > insanitystacks || farmLevel >= 0 && insanitystackszones > insanitystacks)) {
                 Rshouldinsanityfarm = true;
             }
         }
