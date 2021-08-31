@@ -216,7 +216,7 @@ function mainLoop() {
         //Stance
         if ((getPageSetting('UseScryerStance') == true) || (getPageSetting('scryvoidmaps') == true && game.global.challengeActive != "Daily") || (getPageSetting('dscryvoidmaps') == true && game.global.challengeActive == "Daily")) useScryerStance();
         else if ((getPageSetting('AutoStance') == 3) || (getPageSetting('use3daily') == true && game.global.challengeActive == "Daily")) windStance();
-        else if (game.global.uberNature == 'Wind' && getEmpowerment() == 'Wind' && getCurrentMapObject() == undefined && game.global.world >= getPageSetting('dWindStackingMin')) setFormation(5);
+        else if (game.global.uberNature == 'Wind' && getEmpowerment() == 'Wind' && getCurrentMapObject() == undefined && game.empowerments.Wind.currentDebuffPower < 300 && game.global.world >= getPageSetting('dWindStackingMin')) setFormation(5);
         else if (getPageSetting('AutoStance') == 1) autoStance();
         else if (getPageSetting('AutoStance') == 2) autoStance2();
 
