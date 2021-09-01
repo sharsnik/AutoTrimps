@@ -433,7 +433,7 @@ AutoPerks.spendHelium2 = function(helium) {
         if(mostEff.level < mostEff.max) {
             var t2 = mostEff.name.endsWith("_II");
             if (t2) {
-                packLevel = mostEff.increase * 10;
+                packLevel = mostEff.increase * 1000;
                 packPrice = AutoPerks.calculateTotalPrice(mostEff, mostEff.level + packLevel) - mostEff.spent;
             }
             if (t2 && packPrice <= helium) {
