@@ -433,7 +433,7 @@ AutoPerks.spendHelium2 = function(helium) {
         if(mostEff.level < mostEff.max) {
             var t2 = mostEff.name.endsWith("_II");
             if (t2) {
-                packLevel = mostEff.increase * 1000;
+                packLevel = mostEff.increase * 10;
                 packPrice = AutoPerks.calculateTotalPrice(mostEff, mostEff.level + packLevel) - mostEff.spent;
             }
             if (t2 && packPrice <= helium) {
@@ -458,11 +458,20 @@ AutoPerks.spendHelium2 = function(helium) {
         var heb4dump = helium;
         var index = $selector.selectedIndex;
         var dumpPerk = AutoPerks.getPerkByName($selector[index].innerHTML);
+
+        var t2 = dumpPerk.name.endsWith("_II");
+
         if(dumpPerk.level < dumpPerk.max) {
             for(price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level); price < helium && dumpPerk.level < dumpPerk.max; price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level)) {
                 helium -= price;
                 dumpPerk.spent += price;
-                dumpPerk.level++;
+
+                if (t2) {
+                    dumpPerk.level += 10000;
+                }
+                else {
+                    dumpPerk.level++;
+                }
             }
         }
         var dumpresults = heb4dump - helium;
