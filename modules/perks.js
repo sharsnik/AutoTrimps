@@ -433,7 +433,7 @@ AutoPerks.spendHelium2 = function(helium) {
         if(mostEff.level < mostEff.max) {
             var t2 = mostEff.name.endsWith("_II");
             if (t2) {
-                packLevel = mostEff.increase * 10;
+                packLevel = mostEff.increase * 1000;
                 packPrice = AutoPerks.calculateTotalPrice(mostEff, mostEff.level + packLevel) - mostEff.spent;
             }
             if (t2 && packPrice <= helium) {
@@ -467,7 +467,7 @@ AutoPerks.spendHelium2 = function(helium) {
                 dumpPerk.spent += price;
 
                 if (t2) {
-                    dumpPerk.level += 10000;
+                    dumpPerk.level += 1000;
                 }
                 else {
                     dumpPerk.level++;
@@ -480,12 +480,20 @@ AutoPerks.spendHelium2 = function(helium) {
     
     var heB4round2 = helium;
     while (effQueue.size > 1) {
+        var t2 = mostEff.name.endsWith("_II");
+
         mostEff = effQueue.poll();
         if (mostEff.level >= mostEff.max) continue;
         price = AutoPerks.calculatePrice(mostEff, mostEff.level);
         if (price >= helium) continue;
         helium -= price;
-        mostEff.level++;
+
+        if (t2) {
+            mostEff.level += 1000;
+        }
+        else {
+            mostEff.level++;
+        }
         mostEff.spent += price;
         inc = AutoPerks.calculateIncrease(mostEff, mostEff.level);
         price = AutoPerks.calculatePrice(mostEff, mostEff.level);
