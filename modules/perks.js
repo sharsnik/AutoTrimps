@@ -462,16 +462,23 @@ AutoPerks.spendHelium2 = function(helium) {
         var t2 = dumpPerk.name.endsWith("_II");
 
         if(dumpPerk.level < dumpPerk.max) {
-            for(price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level); price < helium && dumpPerk.level < dumpPerk.max; price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level)) {
-                helium -= price;
-                dumpPerk.spent += price;
-
+            for(price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level); price < helium && dumpPerk.level < dumpPerk.max; ) {
                 if (t2) {
-                    dumpPerk.level += 1000000;
+                    packLevel = 1000000;
+                    packPrice = AutoPerks.calculateTotalPrice(dumpPerk, dumpPerk.level + packLevel) - dumpPerk.spent;
+                }
+                if (t2) {
+                    dumpPerk.level += packLevel;
+                    helium -= packPrice;
+                    dumpPerk.spent += packPrice;
                 }
                 else {
                     dumpPerk.level++;
+                    helium -= price;
+                    dumpPerk.spent += price;
                 }
+
+                price = AutoPerks.calculatePrice(dumpPerk, dumpPerk.level);
             }
         }
         var dumpresults = heb4dump - helium;
