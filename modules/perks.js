@@ -473,6 +473,9 @@ AutoPerks.spendHelium2 = function(helium) {
                     dumpPerk.level++;
                 }
             }
+            if (t2) {
+                dumpPerk.level -= 9999;
+            }
         }
         var dumpresults = heb4dump - helium;
         debug("AutoPerks2: Dump Perk " + AutoPerks.capitaliseFirstLetter(dumpPerk.name) + " level post-dump: "+ dumpPerk.level + " Helium Dumped: " + prettify(dumpresults) + " He.", "perks");        
