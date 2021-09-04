@@ -467,14 +467,11 @@ AutoPerks.spendHelium2 = function(helium) {
                 dumpPerk.spent += price;
 
                 if (t2) {
-                    dumpPerk.level += 10000;
+                    dumpPerk.level += 1000000;
                 }
                 else {
                     dumpPerk.level++;
                 }
-            }
-            if (t2) {
-                dumpPerk.level -= 9999;
             }
         }
         var dumpresults = heb4dump - helium;
