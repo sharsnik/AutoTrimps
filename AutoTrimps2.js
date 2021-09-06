@@ -317,7 +317,9 @@ function mainLoop() {
             archstring();
         }
 
-        if ((getPageSetting('Rmaxequalityminzone') <= 0 || game.global.world >= getPageSetting('Rmaxequalityminzone')) && (getPageSetting('Rmaxequalitymaxzone') <= 0 || game.global.world <= getPageSetting('Rmaxequalitymaxzone'))) {
+        var swarm = (getCurrentEnemy().name == "Arachnimp" || getCurrentEnemy().name == "Beetlimp" || getCurrentEnemy().name == "Mantimp" || getCurrentEnemy().name == "Butterflimp") && game.challenges.Exterminate.experienced;
+
+        if (!swarm && (getPageSetting('Rmaxequalityminzone') <= 0 || game.global.world >= getPageSetting('Rmaxequalityminzone')) && (getPageSetting('Rmaxequalitymaxzone') <= 0 || game.global.world <= getPageSetting('Rmaxequalitymaxzone'))) {
             equalityScaling = true;
 
             var isVoid = false;
