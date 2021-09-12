@@ -1246,7 +1246,7 @@ RAutoPerks.applyCalculationsRespec = function(perks,remainingRadon){
         for(var i in perks) {
             var capitalized = RAutoPerks.capitaliseFirstLetter(perks[i].name);
             game.global.buyAmt = perks[i].radLevel;
-            if (getPortalUpgradePrice(capitalized) <= remainingRadon) {
+            if (getPortalUpgradePrice(capitalized) <= remainingRadon || perks[i].fixed) {
                 if (MODULES["perks"].RshowDetails)
                     debug("RAutoPerks-Respec Buying: " + capitalized + " " + perks[i].radLevel, "perks");
                 buyPortalUpgrade(capitalized);
