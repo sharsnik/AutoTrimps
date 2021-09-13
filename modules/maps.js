@@ -2000,7 +2000,7 @@ function RautoMap() {
                 }
                 mapsClicked();
             }
-            else if (game.global.switchToMaps && (Rshouldworshipperfarm || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1)) {
+            else if (game.global.switchToMaps && (Rshouldworshipperfarm/* || game.resources.trimps.realMax() <= game.resources.trimps.owned + 1*/)) {
                 mapsClicked();
             }
         }
