@@ -1392,6 +1392,9 @@ RAutoPerks.initializePerks = function () {
     
     equality.exprate = 1.5;
     championism.exprate = 5;
+
+    observation.exprate = 2;
+
     //scruffy
 	//no
     //tier2
