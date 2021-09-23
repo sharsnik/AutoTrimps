@@ -273,7 +273,7 @@ AutoPerks.clickAllocate = function() {
         else value = perk.value;
 
         if (value === undefined) {
-            value = 0.0001;
+            value = 0.1;
         }
 
         totalValue = totalValue + value;
