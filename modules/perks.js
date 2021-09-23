@@ -273,7 +273,7 @@ AutoPerks.clickAllocate = function() {
         else value = perk.value;
 
         if (value === undefined) {
-            value = 0.1;
+            value = 0.0001;
         }
 
         totalValue = totalValue + value;
@@ -291,6 +291,10 @@ AutoPerks.clickAllocate = function() {
 
         if (perk.updatedValue != -1) value = perk.updatedValue;
         else value = perk.value;
+
+        if (value === undefined) {
+            value = 0.0001;
+        }
 
         game.global.buyAmt = "Max";
         game.global.maxSplit = value / totalValue;
