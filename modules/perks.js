@@ -248,7 +248,7 @@ AutoPerks.clickAllocate = function() {
     if (Number.isNaN(remainingHelium))
         debug("AutoPerks: Major Error: Reading your Helium amount. " + remainingHelium, "perks");    
 
-    var result;
+    /*var result;
     if (getPageSetting('fastallocate')==true)
         result = AutoPerks.spendHelium2(remainingHelium);
     else
@@ -257,6 +257,10 @@ AutoPerks.clickAllocate = function() {
         debug("AutoPerks: Major Error: Make sure all ratios are set properly.","perks");
         return;
     }
+
+    var perks = AutoPerks.getOwnedPerks();
+    AutoPerks.applyCalculations(perks,remainingHelium);
+    debug("AutoPerks: Auto-Allocate Finished.","perks");*/
 
     var perks = AutoPerks.getOwnedPerks();
 
@@ -299,11 +303,7 @@ AutoPerks.clickAllocate = function() {
         var capitalized = AutoPerks.capitaliseFirstLetter(dumpPerk[i].name);
         buyPortalUpgrade(capitalized);
     }
-
-
-    //var perks = AutoPerks.getOwnedPerks();
-    //AutoPerks.applyCalculations(perks,remainingHelium);
-    //debug("AutoPerks: Auto-Allocate Finished.","perks");
+    game.global.buyAmt = oldBuy;
 }
 
 AutoPerks.getHelium = function() {
