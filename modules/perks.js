@@ -279,6 +279,7 @@ AutoPerks.clickAllocate = function() {
     }
 
     var oldBuy = game.global.buyAmt;
+    var oldSplit = game.global.maxSplit;
     for (var i in perks) {
         var value;
 
@@ -293,7 +294,6 @@ AutoPerks.clickAllocate = function() {
     }
     var $selector = document.getElementById('dumpPerk');
     if ($selector != null && $selector.value != "None") {
-        var heb4dump = helium;
         var index = $selector.selectedIndex;
         var dumpPerk = AutoPerks.getPerkByName($selector[index].innerHTML);
 
@@ -304,6 +304,7 @@ AutoPerks.clickAllocate = function() {
         buyPortalUpgrade(capitalized);
     }
     game.global.buyAmt = oldBuy;
+    game.global.maxSplit = oldSplit;
 }
 
 AutoPerks.getHelium = function() {
