@@ -281,6 +281,7 @@ AutoPerks.clickAllocate = function() {
 
     if (game.global.canRespecPerks) {
         respecPerks();
+        clearPerks();
     }
 
     var oldBuy = game.global.buyAmt;
