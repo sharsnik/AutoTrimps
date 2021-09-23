@@ -267,6 +267,7 @@ AutoPerks.clickAllocate = function() {
     var totalValue = 0;
     for (var i in perks) {
         var value;
+        perk = perks[i];
 
         if (perk.updatedValue != -1) value = perk.updatedValue;
         else value = perk.value;
@@ -282,6 +283,7 @@ AutoPerks.clickAllocate = function() {
     var oldSplit = game.global.maxSplit;
     for (var i in perks) {
         var value;
+        perk = perks[i];
 
         if (perk.updatedValue != -1) value = perk.updatedValue;
         else value = perk.value;
@@ -300,7 +302,7 @@ AutoPerks.clickAllocate = function() {
         game.global.buyAmt = "Max";
         game.global.maxSplit = 1.0;
 
-        var capitalized = AutoPerks.capitaliseFirstLetter(dumpPerk[i].name);
+        var capitalized = AutoPerks.capitaliseFirstLetter(dumpPerk.name);
         buyPortalUpgrade(capitalized);
     }
     game.global.buyAmt = oldBuy;
