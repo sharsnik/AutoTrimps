@@ -272,6 +272,10 @@ AutoPerks.clickAllocate = function() {
         if (perk.updatedValue != -1) value = perk.updatedValue;
         else value = perk.value;
 
+        if (perk.name == "motivation" || perk.name == "power" || perk.name == "toughness" || perk.name == "looting") {
+            value /= 10;
+        }
+
         if (value === undefined) {
             value = 0.0001;
         }
@@ -292,6 +296,10 @@ AutoPerks.clickAllocate = function() {
 
         if (perk.updatedValue != -1) value = perk.updatedValue;
         else value = perk.value;
+
+        if (perk.name == "motivation" || perk.name == "power" || perk.name == "toughness" || perk.name == "looting") {
+            value /= 10;
+        }
 
         if (value === undefined) {
             value = 0.0001;
