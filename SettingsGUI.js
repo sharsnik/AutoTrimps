@@ -574,7 +574,7 @@ function initializeAllSettings() {
     createSetting('Rfrozencastle', 'Frozen Castle', '-1 to disable. When to run the map Frozen Castle during Hypothermia. Use it like this: 50,91. The first number is what zone Melting Point should be run at, the second number is what Cell to run it at. In this example AutoMaps would run Melting Point at z50 cell 91. Must define both values. Works in the challenge Hypothermia. ', 'multiValue', [-1], null, 'Maps');
     
     //Timefarm
-    document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rfrozencastle').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtimefarmzone', 'TF: Zone', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
@@ -1750,6 +1750,7 @@ function updateCustomButtons() {
     radonon ? turnOn("RRunNewVoidsUntilNew"): turnOff("RRunNewVoidsUntilNew");
     radonon ? turnOn("Rprispalace"): turnOff("Rprispalace");
     radonon ? turnOn("Rmeltpoint"): turnOff("Rmeltpoint");
+    radonon ? turnOn("Rfrozencastle"): turnOff("Rfrozencastle");
     
     //Spire
     !radonon ? turnOn("MaxStacksForSpire"): turnOff("MaxStacksForSpire");
