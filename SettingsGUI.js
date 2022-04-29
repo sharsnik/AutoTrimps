@@ -1577,7 +1577,7 @@ function updateCustomButtons() {
     !radonon && getPageSetting('c2runnerstart') == true ? turnOn("c2runnerpercent"): turnOff("c2runnerpercent");
 
 
-    var decaBuild = true;
+    var decaBuild = bwRewardUnlocked("DecaBuild") == true;
     //Buildings
     !radonon ? turnOn("BuyBuildingsNew"): turnOff("BuyBuildingsNew");
     !radonon ? turnOn("MaxGym"): turnOff("MaxGym");
