@@ -1577,13 +1577,13 @@ function updateCustomButtons() {
     !radonon && getPageSetting('c2runnerstart') == true ? turnOn("c2runnerpercent"): turnOff("c2runnerpercent");
 
 
-    
+    var decaBuild = true;
     //Buildings
     !radonon ? turnOn("BuyBuildingsNew"): turnOff("BuyBuildingsNew");
     !radonon ? turnOn("MaxGym"): turnOff("MaxGym");
     !radonon ? turnOn("GymWall"): turnOff("GymWall");
-    var fuckbuilding = (bwRewardUnlocked("AutoStructure") == true && game.talents.deciBuild.purchased && getPageSetting('hidebuildings')==true && getPageSetting('BuyBuildingsNew')==0);
-    (!radonon && bwRewardUnlocked("AutoStructure") == true && game.talents.deciBuild.purchased) ? turnOn("hidebuildings") : turnOff("hidebuildings");
+    var fuckbuilding = (bwRewardUnlocked("AutoStructure") == true && decaBuild && getPageSetting('hidebuildings')==true && getPageSetting('BuyBuildingsNew')==0);
+    (!radonon && bwRewardUnlocked("AutoStructure") == true && decaBuild) ? turnOn("hidebuildings") : turnOff("hidebuildings");
     (!radonon && !fuckbuilding) ? turnOn("MaxHut") : turnOff("MaxHut");
     (!radonon && !fuckbuilding) ? turnOn("MaxHouse") : turnOff("MaxHouse");
     (!radonon && !fuckbuilding) ? turnOn("MaxMansion") : turnOff("MaxMansion");
